@@ -8,13 +8,14 @@
 Write a unit test for the word reversing functionality of the above route. (Note that this will be easiest if you write a helper method for the word reversing, so that you can call that method for testing.)
 
 ## Run the app
-1. Navigate to ./src/main/java/com/mattstuhring/songr/SongrApplication.java
-2. Run - songrapplication
+1. Navigate to project in the terminal
+2. ``` $ gradle bootRun ```
 3. Open brower and navigate to http://localhost:8080
 
 ## Routes
 - /hello
 - /capitalize/{user input here...}
+- /reverse
 - /reverse/?words={user input goes here...}
 
 # Resources
