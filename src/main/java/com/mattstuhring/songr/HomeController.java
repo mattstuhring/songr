@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String getRoot() {
-        System.out.println("Somebody got the root");
+        System.out.println("Somebody got hit the home route");
+        return "home";
+    }
+
+    @GetMapping("/hello")
+    public String getHelloWorld() {
         return "helloworld";
     }
 
