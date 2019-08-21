@@ -1,5 +1,6 @@
 package com.mattstuhring.songr;
 
+import com.mattstuhring.songr.controllers.HomeController;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
