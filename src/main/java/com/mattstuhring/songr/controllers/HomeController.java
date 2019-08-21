@@ -1,4 +1,4 @@
-package com.mattstuhring.songr;
+package com.mattstuhring.songr.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String getRoot() {
-        System.out.println("Somebody got hit the home route");
+        System.out.println("Somebody hit the home route");
         return "home";
     }
 
