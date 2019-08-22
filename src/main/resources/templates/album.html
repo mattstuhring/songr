@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Songr</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Songr</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/albums">Albums</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/songs">Songs</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 offset-sm-6">
+            <div class="card">
+                <img th:src="${album.imageUrl}" class="card-img-top" alt="Album Cover">
+                <div class="card-body">
+                    <h4 th:id="${album.title}" th:text="${album.title}">Album Title</h4>
+                    <p>Artist: <span th:text="${album.artist}"></span></p>
+                    <p>Song Count: <span th:text="${album.songCount}"></span></p>
+                    <p>Length: <span th:text="${album.length}"></span> mins</p>
+
+                    <ul class="list-group">
+                        <li class="list-group-item" th:each="song : ${album.songs}"><span th:text="${song.title}"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

@@ -29,34 +29,28 @@
             <div class="col-sm-4 offset-sm-4">
                 <div class="card">
                     <div class="card-header">
-                        Add Album
+                        Add Song
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/albums">
-
+                        <form method="POST" action="/songs">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Enter album title" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="artist">Artist</label>
-                                <input type="text" name="artist" class="form-control" id="artist" aria-describedby="artist" placeholder="Enter artist" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="songCount">Song Count</label>
-                                <input type="number" name="songCount" class="form-control" id="songCount" aria-describedby="songCount" placeholder="Enter number of songs" min="0" required>
+                                <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Enter song title" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="length">Length</label>
-                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" placeholder="Enter length in minutes" min="0">
+                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" placeholder="Enter length in seconds" min="0" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="imageUrl">Image URL</label>
-                                <input type="url" name="imageUrl" class="form-control" id="imageUrl" aria-describedby="imageUrl" placeholder="Enter image URL">
+                                <label for="trackNumber">Track Number</label>
+                                <input type="number" name="trackNumber" class="form-control" id="trackNumber" aria-describedby="trackNumber" placeholder="Enter track number" min="0" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="album">Album</label>
+                                <input type="text" name="album" class="form-control" id="album" aria-describedby="album" placeholder="Enter album title" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -66,25 +60,21 @@
             </div>
         </div>
 
-        <h1>My Album List</h1>
+        <h1>All Songs</h1>
 
         <div class="row">
-            <div th:each="album : ${albums}" class="col-sm-3 card">
-                <img th:src="${album.imageUrl}" class="card-img-top" alt="Album Cover">
-                <div class="card-body">
-                    <h4 th:id="${album.title}" th:text="${album.title}">Album Title</h4>
-                    <p>Artist: <span th:text="${album.artist}"></span></p>
-                    <p>Song Count: <span th:text="${album.songCount}"></span></p>
-                    <p>Length: <span th:text="${album.length}"></span> mins</p>
-                    <p>ID: <span th:text="${album.id}"></span></p>
-                    <a th:href="${'/albums/' + album.id}">Track List</a>
+            <div class="col">
+                <div class="list-group">
+
+
+<!--                    <a th:href="${ '/directors/' + movie.director.id}">Directed by <span th:text="${movie.director}"></span></a>-->
+
+                    <a th:each="song : ${songs}" href="#" class="list-group-item list-group-item-action">
+                        <h4 th:text="${song.title}">Song Title</h4>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
-
-    
-
 </body>
 </html>

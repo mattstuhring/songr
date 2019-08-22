@@ -10,7 +10,7 @@ Write a unit test for the word reversing functionality of the above route. (Note
 ## Run the app
 1. Navigate to project in the terminal
 2. ``` $ gradle bootRun ```
-3. Open brower and navigate to http://localhost:8080
+3. Open browser and navigate to http://localhost:8080
 
 ## Routes
 - /hello
