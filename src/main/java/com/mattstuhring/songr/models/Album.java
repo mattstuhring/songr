@@ -1,9 +1,7 @@
 package com.mattstuhring.songr.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -11,11 +9,17 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
     String title;
     String artist;
     int songCount;
     int length;
     String imageUrl;
+
+    // fetchtype of eager means always fetch this related data
+    // mappedBy matches the name of the instance variable in the Movie class
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "album")
+    List<Song> songs;
 
     // Must have an empty constructor
     public Album() {}
@@ -50,5 +54,9 @@ public class Album {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
     }
 }
