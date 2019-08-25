@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Songr</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Songr</a>
+    <a class="navbar-brand" href="/">Songr</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,20 +29,30 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-3 offset-sm-6">
+        <div class="col-sm-6 offset-sm-3">
             <div class="card">
                 <img th:src="${album.imageUrl}" class="card-img-top" alt="Album Cover">
-                <div class="card-body">
-                    <h4 th:id="${album.title}" th:text="${album.title}">Album Title</h4>
-                    <p>Artist: <span th:text="${album.artist}"></span></p>
-                    <p>Song Count: <span th:text="${album.songCount}"></span></p>
-                    <p>Length: <span th:text="${album.length}"></span> mins</p>
-
-                    <ul class="list-group">
-                        <li class="list-group-item" th:each="song : ${album.songs}"><span th:text="${song.title}"></span></li>
-                    </ul>
+                <div class="card-body text-center">
+                    <h2><span th:text="${album.artist}"></span></h2>
+                    <p th:id="${album.title}" th:text="${album.title}">Album Title</p>
+                    <p>Songs: <span th:text="${album.songCount}"></span> / Length: <span th:text="${album.length}"></span> mins</p>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <h1 class="song-list-title text-center">Song List</h1>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" th:each="song : ${album.songs}"><span th:text="${song.title}"></span></li>
+            </ul>
         </div>
     </div>
 </div>
