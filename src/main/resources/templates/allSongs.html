@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Songr</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Songr</a>
+        <a class="navbar-brand" href="/">Songr</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,53 +29,67 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 offset-sm-4">
+            <div class="col-sm-10 offset-sm-1">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary text-light">
                         Add Song
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/songs">
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Enter song title" required>
+
+                        <div class="row">
+                            <div class="col-sm-6 text-center">
+                                <img class="music-splatter" src="/music-splatter.png">
                             </div>
 
-                            <div class="form-group">
-                                <label for="length">Length</label>
-                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" placeholder="Enter length in seconds" min="0" required>
-                            </div>
+                            <div class="col-sm-6">
+                                <form method="POST" action="/songs">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input type="text" name="title" class="form-control" id="title" aria-describedby="title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="album">Album</label>
+                                        <input type="text" name="album" class="form-control" id="album" aria-describedby="album" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="trackNumber">Track Number</label>
+                                                <input type="number" name="trackNumber" class="form-control" id="trackNumber" aria-describedby="trackNumber" min="0" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="length">Length</label>
+                                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" min="0" required>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group">
-                                <label for="trackNumber">Track Number</label>
-                                <input type="number" name="trackNumber" class="form-control" id="trackNumber" aria-describedby="trackNumber" placeholder="Enter track number" min="0" required>
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <label for="album">Album</label>
-                                <input type="text" name="album" class="form-control" id="album" aria-describedby="album" placeholder="Enter album title" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h1>All Songs</h1>
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1">
+                <h2 class="text-center list-title-margin">All Songs</h2>
+                <hr>
+            </div>
+        </div>
 
         <div class="row">
-            <div class="col">
-                <div class="list-group">
-
-
-<!--                    <a th:href="${ '/directors/' + movie.director.id}">Directed by <span th:text="${movie.director}"></span></a>-->
-
-                    <a th:each="song : ${songs}" href="#" class="list-group-item list-group-item-action">
-                        <h4 th:text="${song.title}">Song Title</h4>
-                    </a>
-                </div>
+            <div class="col-sm-6 offset-sm-3">
+                <ul class="list-group list-group-flush">
+                    <li th:each="song : ${songs}" class="list-group-item list-group-item-action">
+                        <h5 th:text="${song.title}">Song Title</h5>
+                        <p>By <span th:text="${song.album.artist}"></span></p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,0 +1,58 @@
+nav {
+    margin-bottom: 40px;
+    color: #007bff;
+}
+
+nav > .navbar-brand, .card > .card-header {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.list-title-margin {
+    margin-top: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 45px;
+}
+
+div.card, .jumbotron {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.song-list-title {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.song-list-title {
+    margin-top: 80px;
+}
+
+hr {
+    margin-bottom: 40px;
+}
+
+.track-list-margin {
+    margin-top: 40px;
+    margin-bottom: 120px;
+}
+
+img.music-splatter {
+    width: 82%;
+}
+
+img.turntable-splatter {
+    width: 77%;
+}
+
+h1.oops-font {
+    margin-top: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 100px;
+}
+
+ul.list-group.list-group-flush {
+    margin-bottom: 100px;
+}
+
+.songr-font {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 80px;
+}

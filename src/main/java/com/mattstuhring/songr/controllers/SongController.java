@@ -21,13 +21,6 @@ public class SongController {
     @Autowired
     AlbumRepository albumRepository;
 
-//    @GetMapping("/songs/${id}")
-//    public String getSongById(@PathVariable long id, Model m) {
-//        Song s = songRepository.findById(id).get();
-//        m.addAttribute("song", s);
-//        return "song";
-//    }
-
     @GetMapping("/songs")
     public String getAllSongs(Model m) {
         List<Song> songs = songRepository.findAll();

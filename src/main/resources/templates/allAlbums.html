@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
     <title>Songr</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Songr</a>
+        <a class="navbar-brand" href="/">Songr</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,58 +29,84 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 offset-sm-4">
+            <div class="col-sm-10 offset-sm-1">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header bg-primary text-light">
                         Add Album
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/albums">
-
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Enter album title" required>
+                        <div class="row">
+                            <div class="col-sm-6 text-center">
+                                <img class="turntable-splatter" src="/turntable-splatter.png">
                             </div>
+                            <div class="col-sm-6">
+                                <form method="POST" action="/albums">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" name="title" class="form-control" id="title" aria-describedby="title" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="artist">Artist</label>
+                                                <input type="text" name="artist" class="form-control" id="artist" aria-describedby="artist" required>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group">
-                                <label for="artist">Artist</label>
-                                <input type="text" name="artist" class="form-control" id="artist" aria-describedby="artist" placeholder="Enter artist" required>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="songCount">Song Count</label>
+                                                <input type="number" name="songCount" class="form-control" id="songCount" aria-describedby="songCount" min="0" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="length">Length (minutes)</label>
+                                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" min="0">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="imageUrl">Image URL</label>
+                                                <input type="url" name="imageUrl" class="form-control" id="imageUrl" aria-describedby="imageUrl">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </form>
                             </div>
-
-                            <div class="form-group">
-                                <label for="songCount">Song Count</label>
-                                <input type="number" name="songCount" class="form-control" id="songCount" aria-describedby="songCount" placeholder="Enter number of songs" min="0" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="length">Length</label>
-                                <input type="number" name="length" class="form-control" id="length" aria-describedby="length" placeholder="Enter length in minutes" min="0">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="imageUrl">Image URL</label>
-                                <input type="url" name="imageUrl" class="form-control" id="imageUrl" aria-describedby="imageUrl" placeholder="Enter image URL">
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h1>My Album List</h1>
-
         <div class="row">
-            <div th:each="album : ${albums}" class="col-sm-3 card">
-                <img th:src="${album.imageUrl}" class="card-img-top" alt="Album Cover">
-                <div class="card-body">
-                    <h4 th:id="${album.title}" th:text="${album.title}">Album Title</h4>
-                    <p>Artist: <span th:text="${album.artist}"></span></p>
-                    <p>Song Count: <span th:text="${album.songCount}"></span></p>
-                    <p>Length: <span th:text="${album.length}"></span> mins</p>
-                    <p>ID: <span th:text="${album.id}"></span></p>
-                    <a th:href="${'/albums/' + album.id}">Track List</a>
+            <div class="col-sm-10 offset-sm-1">
+                <h1 class="text-center list-title-margin">All Albums</h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row d-flex flex-row justify-content-center">
+            <div th:each="album : ${albums}" class="col-sm-5 mr-3 ml-3">
+                <div class="card">
+                    <img th:src="${album.imageUrl}" class="card-img-top" alt="Album Cover">
+                    <div class="card-body text-center">
+                        <h4><span th:text="${album.artist}"></span></h4>
+                        <p th:id="${album.title}" th:text="${album.title}">Album Title</p>
+
+                        <p>Songs: <span th:text="${album.songCount}"></span> / Length: <span th:text="${album.length}"></span> mins</p>
+                        <a th:href="${'/albums/' + album.id}">Track List</a>
+                    </div>
                 </div>
             </div>
         </div>
